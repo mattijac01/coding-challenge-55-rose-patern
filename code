@@ -1,0 +1,30 @@
+var slider;
+
+function setup() {
+  createCanvas(400, 400);
+  slider = createSlider(-350,1400,0,0.05);
+}
+
+function draw() {
+  background(0);
+  translate(width / 2, height / 2);
+  k = slider.value()*slider.value();
+  
+  for(var a = 0; a < TWO_PI; a+=0.001)
+  {
+    var r = 100 * cos(k * a);
+    var x = r * cos(r/k);
+    var y = r * sin(r*k);
+    if(k<501)
+    {
+    stroke((x+450+y+k*2),(x+50+y+100+k*2),x+y+k);
+    }
+    else
+    {
+    stroke((x+850+y*2+(-k)),(x+y+550*2+(-k)),x+200+y+-k);
+    }
+    strokeWeight(1);
+    point(x,y);
+  }
+  
+}
